@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { urlRegExp } = require('./constants/index');
+const { urlRegExp } = require('../constants/index');
 
 
 const userSchema = new mongoose.Schema({
