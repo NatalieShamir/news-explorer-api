@@ -1,14 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
-/*
+
 const {
   getCurrentUser,
-} = require('./controllers/users');
+} = require('../controllers/users');
 
-const { } = require('./middleware/validation'); */
-
-router.get('users/me', getCurrentUser);
+router.get('/me', getCurrentUser);
 
 module.exports = {
   userRouter: router,

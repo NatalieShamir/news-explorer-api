@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { urlRegExp } = require('../constants/index');
 
-
 const userSchema = new mongoose.Schema({
   keyword: {
     type: String,
@@ -44,7 +43,7 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'user',
-  }
+  },
 });
 
 module.exports = mongoose.model('article', userSchema);
