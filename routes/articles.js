@@ -2,8 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { getAllArticles, createArticle, deleteArticle
-} = require('../controllers/articles');
+const { getAllArticles, createArticle, deleteArticle } = require('../controllers/articles');
 
 router.get('/', getAllArticles);
 router.post('/', createArticle);
