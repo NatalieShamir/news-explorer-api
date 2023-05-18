@@ -9,6 +9,7 @@ const { cardRouter } = require('./routes/cards');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middleware/logger');
+const errorHandler = require('./middlewares/error-handler');
 
 app.use(requestLogger);
 
@@ -19,6 +20,7 @@ app.use('/users', userRouter);
 app.use('/cards', cardRouter);
 
 app.use(errorLogger);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);
