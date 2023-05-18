@@ -8,7 +8,7 @@ const { userRouter } = require('./routes/users');
 const { articleRouter } = require('./routes/articles');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
-const { requestLogger, errorLogger } = require('./middleware/logger');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/error-handler');
 
 app.use(requestLogger);
