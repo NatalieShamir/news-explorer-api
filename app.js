@@ -4,6 +4,13 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 const bodyParser = require('body-parser');
 
 const { errors } = require('celebrate');
@@ -16,6 +23,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/error-handler');
 
 app.use(requestLogger);
+
+app.use(limiter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
