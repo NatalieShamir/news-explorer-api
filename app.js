@@ -4,6 +4,8 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+var cors = require('cors');
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -21,6 +23,9 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/error-handler');
+
+app.use(cors());
+app.options('*', cors());
 
 app.use(requestLogger);
 
