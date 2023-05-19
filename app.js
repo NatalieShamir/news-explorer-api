@@ -4,6 +4,8 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+const { errors } = require('celebrate');
+
 const { userRouter } = require('./routes/users');
 const { articleRouter } = require('./routes/articles');
 const { createUser, login } = require('./controllers/users');
@@ -19,6 +21,7 @@ app.use(auth);
 app.use('/users', userRouter);
 app.use('/cards', articleRouter);
 
+app.use(errors());
 app.use(errorLogger);
 app.use(errorHandler);
 
