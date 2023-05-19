@@ -4,6 +4,8 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+const bodyParser = require('body-parser');
+
 const { errors } = require('celebrate');
 
 const { userRouter } = require('./routes/users');
@@ -14,6 +16,9 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/error-handler');
 
 app.use(requestLogger);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/signin', login);
 app.post('/signup', createUser);
