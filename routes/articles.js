@@ -4,9 +4,11 @@ const router = express.Router();
 
 const { getAllArticles, createArticle, deleteArticle } = require('../controllers/articles');
 
+const { validateArticleBody, validateArticleId } = require('../middlewares/validation');
+
 router.get('/', getAllArticles);
-router.post('/', createArticle);
-router.delete('/articleId', deleteArticle);
+router.post('/', validateArticleBody, createArticle);
+router.delete('/articleId', validateArticleId, deleteArticle);
 
 module.exports = {
   articleRouter: router,

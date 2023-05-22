@@ -26,6 +26,7 @@ const { articleRouter } = require('./routes/articles');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { validateUserBody, validateAuthentication } = require('./middlewares/validation');
 const errorHandler = require('./middlewares/error-handler');
 
 app.use(cors());
@@ -38,8 +39,8 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/signin', login);
-app.post('/signup', createUser);
+app.post('/signin', validateAuthentication, login);
+app.post('/signup', validateUserBody, createUser);
 app.use(auth);
 app.use('/users', userRouter);
 app.use('/cards', articleRouter);
