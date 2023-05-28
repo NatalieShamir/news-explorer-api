@@ -8,7 +8,7 @@ const { validateArticleBody, validateArticleId } = require('../middlewares/valid
 
 router.get('/', getSavedArticles);
 router.post('/', validateArticleBody, createArticle);
-router.delete('/articleId', validateArticleId, deleteArticle);
+router.delete('/:articleId', validateArticleId, deleteArticle);
 
 module.exports = {
   articleRouter: router,
