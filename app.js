@@ -31,6 +31,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { validateUserBody, validateAuthentication } = require('./middlewares/validation');
 const errorHandler = require('./middlewares/error-handler');
 const NotFoundError = require('./errors/NotFoundError');
+const { DATABASE_URL } = require('./utils/config');
 
 app.use(cors());
 app.options('*', cors());
@@ -42,7 +43,7 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/newsdb');
+mongoose.connect(DATABASE_URL);
 
 app.post('/signin', validateAuthentication, login);
 app.post('/signup', validateUserBody, createUser);
