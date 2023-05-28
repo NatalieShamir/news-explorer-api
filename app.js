@@ -43,7 +43,7 @@ app.post('/signin', validateAuthentication, login);
 app.post('/signup', validateUserBody, createUser);
 app.use(auth);
 app.use('/users', userRouter);
-app.use('/cards', articleRouter);
+app.use('/articles', articleRouter);
 
 app.use(errors());
 app.use(errorLogger);
