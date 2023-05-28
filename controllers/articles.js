@@ -5,9 +5,12 @@ const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const AccessDeniedError = require('../errors/AccessDeniedError');
 
-const getAllArticles = (req, res, next) => {
-  Article.find({})
-    .then((articles) => res.send({ data: articles }))
+const getSavedArticles = (req, res, next) => {
+  articleModel
+    .find({ owner: req.user._id })
+    .then((articles) => {
+      res.send(articles);
+    })
     .catch(() => next(new InternalServerError('An error has occured on the server')));
 };
 
@@ -49,5 +52,5 @@ const deleteArticle = (req, res, next) => {
 };
 
 module.exports = {
-  getAllArticles, createArticle, deleteArticle,
+  getSavedArticles, createArticle, deleteArticle,
 };
