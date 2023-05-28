@@ -28,6 +28,7 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { validateUserBody, validateAuthentication } = require('./middlewares/validation');
 const errorHandler = require('./middlewares/error-handler');
+const NotFoundError = require('./errors/NotFoundError');
 
 app.use(cors());
 app.options('*', cors());
@@ -45,6 +46,9 @@ app.use(auth);
 app.use('/users', userRouter);
 app.use('/articles', articleRouter);
 
+app.use('*', (req, res, next) => {
+  next(new NotFoundError('Not found route'));
+});
 app.use(errors());
 app.use(errorLogger);
 app.use(errorHandler);
