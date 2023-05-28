@@ -8,6 +8,8 @@ const app = express();
 
 const rateLimit = require('express-rate-limit');
 
+const mongoose = require('mongoose');
+
 const cors = require('cors');
 
 const limiter = rateLimit({
