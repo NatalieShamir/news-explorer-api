@@ -6,7 +6,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const AccessDeniedError = require('../errors/AccessDeniedError');
 
 const getSavedArticles = (req, res, next) => {
-  articleModel
+  Article
     .find({ owner: req.user._id })
     .then((articles) => {
       res.send(articles);
