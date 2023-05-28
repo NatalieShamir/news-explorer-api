@@ -40,6 +40,8 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+mongoose.connect('mongodb://localhost:27017/newsdb');
+
 app.post('/signin', validateAuthentication, login);
 app.post('/signup', validateUserBody, createUser);
 app.use(auth);
