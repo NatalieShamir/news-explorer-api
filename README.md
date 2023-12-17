@@ -1,11 +1,6 @@
-# news-explorer-api
+# News Explorer API
 
-### Overview
-
-- Technologies and Techniques Used
-- Server Domain Name
-
-**Technologies and Techniques Used**
+## Technologies Used
 
 - Node.js
 - MongoDB server
@@ -13,7 +8,10 @@
 - MongoDB Compass
 - Google Cloud Remote Server
 
-**Server Domain Name**
+## Application API Location
 
-natalie.fr.to
-api.natalie.fr.to
+[Application API Location](api.news-explorer.my.to)
+
+## Frontend Repository
+
+[Frontend Repository](https://github.com/NatalieShamir/news-explorer-frontend)
