@@ -12,12 +12,12 @@ const mongoose = require('mongoose');
 
 const cors = require('cors');
 
-const limiter = rateLimit({
+/* const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
   standardHeaders: true,
   legacyHeaders: false,
-});
+}); */
 
 const bodyParser = require('body-parser');
 
@@ -38,7 +38,7 @@ app.options('*', cors());
 
 app.use(requestLogger);
 
-app.use(limiter);
+// app.use(limiter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
